@@ -1,4 +1,4 @@
-# Script Repoitory for Data Pre-Processing
+# Script Repository for Data Pre-Processing
 
 This directory contains the scripts for pre-processing the data. 
 
