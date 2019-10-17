@@ -1,0 +1,42 @@
+---
+title: "Data Preparation"
+output: html_notebook
+---
+
+
+```{r knitr root.dir}
+# Set working directory. 
+setwd("~/Documents/Local/DS340W-Group10-FA19/sources/metadata")
+library(tidyverse)
+```
+
+```{r}
+train_meta <- read.table("~/Documents/Local/DS340W-Group10-FA19/sources/metadata/metadata_training_data.tsv", sep="\t", header=TRUE)
+valid_meta <- read.table("~/Documents/Local/DS340W-Group10-FA19/sources/metadata/metadata_validation_data.tsv", sep="\t", header=TRUE)
+meta <- rbind(train_meta, valid_meta)
+
+head(train_meta)
+head(valid_meta)
+```
+
+```{r}
+meta %>% group_by(mark_id) %>%
+    summarise(count = n()) %>%
+    arrange(desc(count))
+```
+
+Histone Marks with large number of data associated: M02, M22 and M16
+Histone Marks with median number of data associated: M21, M03 and M25
+
+In this project, we'll mainly use M21, M03 and M25 as our choice. 
+
+```{r}
+# Generate necessary data lists. 
+data_list <- meta %>%
+    mutate(mark_id = as.character(mark_id)) %>%
+    filter(mark_id %in% c("M21", "M03", "M25")) %>%
+    transmute(name = paste0(as.character(cell_type_id), mark_id))
+
+write.table(data_list, file = "~/Documents/Local/DS340W-Group10-FA19/sources/output/ML_data_list.txt", quote=FALSE, row.names=FALSE, col.names=FALSE)
+```
+
