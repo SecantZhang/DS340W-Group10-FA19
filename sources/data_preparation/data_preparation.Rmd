@@ -6,13 +6,13 @@ output: html_notebook
 
 ```{r knitr root.dir}
 # Set working directory. 
-setwd("~/Documents/Local/DS340W-Group10-FA19/sources/metadata")
+setwd("~/Documents/PROJECTS/DS340W-Group10-FA19/sources/metadata")
 library(tidyverse)
 ```
 
 ```{r}
-train_meta <- read.table("~/Documents/Local/DS340W-Group10-FA19/sources/metadata/metadata_training_data.tsv", sep="\t", header=TRUE)
-valid_meta <- read.table("~/Documents/Local/DS340W-Group10-FA19/sources/metadata/metadata_validation_data.tsv", sep="\t", header=TRUE)
+train_meta <- read.table("~/Documents/PROJECTS/DS340W-Group10-FA19/sources/metadata/metadata_training_data.tsv", sep="\t", header=TRUE)
+valid_meta <- read.table("~/Documents/PROJECTS/DS340W-Group10-FA19/sources/metadata/metadata_validation_data.tsv", sep="\t", header=TRUE)
 meta <- rbind(train_meta, valid_meta)
 
 head(train_meta)
@@ -22,7 +22,13 @@ head(valid_meta)
 ```{r}
 meta %>% group_by(mark_id) %>%
     summarise(count = n()) %>%
-    arrange(desc(count))
+    arrange(desc(count)) %>%
+    mutate(mark_id = as.factor(mark_id)) %>%
+    ggplot(aes(reorder(mark_id, -count), y = count)) +
+    geom_col(aes(fill = count)) +
+    theme(axis.text.x = element_text(angle=90, hjust=1), 
+          text = element_text(size = 18)) +
+    labs(x = "Histone Marks", y = "Count of Training Data")
 ```
 
 Histone Marks with large number of data associated: M02, M22 and M16

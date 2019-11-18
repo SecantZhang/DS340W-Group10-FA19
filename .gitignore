@@ -1,3 +1,5 @@
 .DS_Store
 derby.log
 metastore_db
+sources/ML_model/sample_data
+.Rhistory
