@@ -193,7 +193,7 @@ pretty(MSE_dict)
     	curr_impute
     		0.2771
 
-
+![svg](img/MSE_plot.svg)
 
 ```python
 # Pairwise Data Visualization. 
@@ -248,8 +248,8 @@ print(features[0,:])
 ```
 
     [0.14298705 0.20360121 0.         0.         0.         0.
-     0.         0.         0.         0.         0.         0.
-     1.         0.         0.         1.        ]
+     1.         0.         0.         0.         0.         0.
+     2.         0.         0.         1.        ]
 
 
 

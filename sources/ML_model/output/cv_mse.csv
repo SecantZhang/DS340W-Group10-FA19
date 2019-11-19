@@ -1,0 +1,13 @@
+validation_fold, track_name, MSE
+0, predicted, 0.1393
+0, avocado, 0.1559
+0, curr_impute, 0.2804
+1, predicted, 0.1402
+1, avocado, 0.1606
+1, curr_impute, 0.2869
+2, predicted, 0.1357
+2, avocado, 0.151
+2, curr_impute, 0.2773
+3, predicted, 0.1357
+3, avocado, 0.1513
+3, curr_impute, 0.2771
