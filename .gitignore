@@ -3,3 +3,4 @@ derby.log
 metastore_db
 sources/ML_model/sample_data
 .Rhistory
+sources/ML_model/.ipynb_checkpoints
